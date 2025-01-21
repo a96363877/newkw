@@ -35,7 +35,7 @@ export function SpecialOfferCard({
       <CountdownTimer {...countdown} />
       <div className="p-4">
         <div className="aspect-square relative mb-4">
-          <Image src={image || "/placeholder.svg"} alt={title} fill className="object-contain" />
+          <img src={image || "/placeholder.svg"} alt={title}  className="object-contain" />
         </div>
         <div className="space-y-2">
           <div className="text-gray-500 text-sm">{category}</div>
@@ -50,7 +50,7 @@ export function SpecialOfferCard({
               product={{
                 id,
                 title,
-                price: salePrice,
+                salePrice,
                 image,
               }}
             />

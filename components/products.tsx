@@ -35,10 +35,9 @@ export function ProductCard({
       )}
       <CardContent className="p-6">
         <div className="aspect-square relative mb-4 group-hover:scale-105 transition-transform duration-300">
-          <Image
+          <img
             src={image || "/placeholder.svg"}
             alt={title}
-            fill
             className="object-contain"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />

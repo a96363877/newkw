@@ -1,71 +1,127 @@
 import { SpecialOfferCard } from "./card-count"
 
-const offers = [
+const offers= [
   {
-    id:1,
-    image:
-      "/",
-    category: "الأرز",
-    title: "أرز بسمتي زيبا كلاسيك",
-    originalPrice: 3.625,
-    salePrice: 3.0,
-    countdown: {
-      days: 38,
-      hours: 14,
-      minutes: 26,
-      seconds: 5,
-    },
-  },
-  {
-    id:2,
-
-    image:
-      "/",
+    id: 1,
+    image: "/montana-frz-molukhia.webp",
     category: "الخضار المجمدة",
-    title: "ملوخية خضراء موتانا",
+    title: "ملوخية خضراء مونتانـا",
     originalPrice: 0.278,
-    salePrice: 0.25,
+    salePrice: 0.250,
     countdown: {
-      days: 38,
-      hours: 14,
-      minutes: 26,
-      seconds: 5,
+      days: 10,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
     },
+    soldOut: false,
   },
   {
-    id:3,
-
-    image:
-      "/",
+    id: 2,
+    image: "/rohu-myanmar-fish-20-kg.webp",
     category: "مأكولات بحرية مجمدة",
-    title: "كرتون - سمك روهو ميانمار 20 كيلو",
+    title: "كرتون - سمك روهو مينمار 20 كيلو",
     originalPrice: 16.665,
     salePrice: 13.332,
     countdown: {
-      days: 10,
-      hours: 14,
-      minutes: 26,
-      seconds: 5,
+      days: 38,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
     },
+    soldOut: false,
   },
   {
-    id:3,
-
-    image:
-      "/",
-    category: "لحوم مجمدة",
-    title: "صدر ديك رومي مدخن أمريكي",
-    originalPrice: 5.75,
-    salePrice: 2.0,
+    id: 3,
+    image: "/zeeba-classic-basmati-rice.webp",
+    category: "الأرز",
+    title: "أرز بسمتي زيبا كلاسيك",
+    originalPrice: 3.625,
+    salePrice: 3.000,
+    countdown: {
+      days: 10,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
+    },
+    soldOut: false,
+  },
+  {
+    id: 4,
+    image: "/zeeba-classic-basmati-rice.webp",
+    category: "الأرز",
+    title: "أرز بسمتي زيبا كلاسيك بلاستيك",
+    originalPrice: 3.625,
+    salePrice: 3.000,
+    countdown: {
+      days: 1,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
+    },
+    soldOut: false,
+  },
+  {
+    id: 5,
+    image: "/maestro-potatoes-with-spices---2-500-kg.webp",
+    category: " KAC - بطاطا  ",
+    title: "بطاطا مايسترو بالبهارات - 2.500 كج",
+    originalPrice: 1.750,
+    salePrice: 1.157,
+    countdown: {
+      days: 10,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
+    },
+    soldOut: false,
+  },
+  {
+    id: 6,
+    image: "/newzealand-corn-kernnel-pcs.webp",
+    category: "الخضار المجمدة",
+    title: "ذرة حب نيوزيلاندي هاي ماركت 1 كيلو",
+    originalPrice: 1.000,
+    salePrice: 0.958,
     countdown: {
       days: 38,
-      hours: 14,
-      minutes: 26,
-      seconds: 5,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
+    },
+    soldOut: false,
+  },
+  {
+    id: 7,
+    image: "/KAC_Smoked_Turkey_Breast.webp",
+    category: "لحوم مجمدة",
+    title: "صدر ديك رومي مدخن أمريكي",
+    originalPrice: 5.750,
+    salePrice: 2.000,
+    countdown: {
+      days: 99,
+      hours: 11,
+      minutes: 27,
+      seconds: 50,
     },
     soldOut: true,
   },
-]
+  {
+    id: 8,
+    image: "/`KAC_Indian_Sugar_50kg.webp`",
+    category: "حبوب",
+    title: "سكر هندي 50 كيلو",
+    originalPrice: 1.200,
+    salePrice: 1.200,
+    countdown: {
+      days: 10,
+      hours: 12,
+      minutes: 27,
+      seconds: 50,
+    },
+    soldOut: false,
+  },
+];
 
 export function SpecialOffersSection() {
   return (
