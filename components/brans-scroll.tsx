@@ -24,7 +24,7 @@ export function BrandsScroll() {
       <ScrollArea className="w-full whitespace-nowrap rounded-lg border">
         <div className="flex w-max space-x-4 p-4">
           {brands.map((brand, i) => (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div key={i} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-[#dbefff94]">
                 <div className="w-24 h-24 mx-auto mb-4">
                   <img src={brand.img} alt="s" />
