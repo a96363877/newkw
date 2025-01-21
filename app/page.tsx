@@ -4,33 +4,79 @@ import { ShoppingCart } from 'lucide-react';
 import '@/styles/globals.css';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { BrandsScroll } from '@/components/brans-scroll';
 import { ProductCard } from '@/components/products';
-import CountdownProductCard from '@/components/count-card';
 import FeatureCards from '@/components/feturs';
+import { Sdrads } from '@/components/brdms';
+import { SpecialOffersSection } from '@/components/spcial-offer';
+import { CartButton } from '@/components/cart-btn';
+
 const products = [
   {
-    image: '/placeholder.svg',
-    title: 'خضروات مجمدة مشكلة علبة',
-    price: '1.250',
+    id:1,
+    image:
+      "/",
+    category: "الأرز",
+    title: "أرز بسمتي زيبا كلاسيك",
+    originalPrice: 3.625,
+    salePrice: 3.0,
+    countdown: {
+      days: 38,
+      hours: 14,
+      minutes: 26,
+      seconds: 5,
+    },
   },
   {
-    image: '/placeholder.svg',
-    title: 'أرز بسمتي ممتاز',
-    price: '3.750',
+    id:2,
+
+    image:
+      "/",
+    category: "الخضار المجمدة",
+    title: "ملوخية خضراء موتانا",
+    originalPrice: 0.278,
+    salePrice: 0.25,
+    countdown: {
+      days: 38,
+      hours: 14,
+      minutes: 26,
+      seconds: 5,
+    },
   },
   {
-    image: '/placeholder.svg',
-    title: 'زيت عباد الشمس',
-    price: '2.500',
+    id:3,
+
+    image:
+      "/",
+    category: "مأكولات بحرية مجمدة",
+    title: "كرتون - سمك روهو ميانمار 20 كيلو",
+    originalPrice: 16.665,
+    salePrice: 13.332,
+    countdown: {
+      days: 10,
+      hours: 14,
+      minutes: 26,
+      seconds: 5,
+    },
   },
   {
-    image: '/placeholder.svg',
-    title: 'بازيلاء خضراء مجمدة',
-    price: '0.950',
+    id:3,
+
+    image:
+      "/",
+    category: "لحوم مجمدة",
+    title: "صدر ديك رومي مدخن أمريكي",
+    originalPrice: 5.75,
+    salePrice: 2.0,
+    countdown: {
+      days: 38,
+      hours: 14,
+      minutes: 26,
+      seconds: 5,
+    },
+    soldOut: true,
   },
-];
+]
 
 const specialOffers = [
   {
@@ -69,12 +115,7 @@ export default function Home() {
               className="h-12 w-auto"
             />
           </Link>
-          <Button variant="ghost" size="icon" className="relative">
-            <ShoppingCart className="h-6 w-6" />
-            <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-              ٠
-            </span>
-          </Button>
+         <CartButton/>
         </div>
       </header>
 
@@ -116,7 +157,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold mb-6">منتجاتنا</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {products.map((product, i) => (
-                <ProductCard key={i} {...product} />
+                <ProductCard  key={i} {...product} />
               ))}
             </div>
           </div>
@@ -124,7 +165,7 @@ export default function Home() {
 
         <section className="py-8">
           <div className="container mx-auto px-4">
-            <BrandsScroll />
+            <Sdrads />
           </div>
         </section>
 
@@ -142,20 +183,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-8">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">العروض الخاصة</h2>
-            {/*   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {specialOffers.map((product, i) => (
-                <ProductCard key={i} {...product} isSpecialOffer />
-              ))}
-              </div>*/}
-            <CountdownProductCard />
-          </div>
-        </section>
+      <SpecialOffersSection/>
         <section className="py-8">
           <FeatureCards />
         </section>
+        <div className='fixed bottom-0 left-3'>
+          <CartButton/>
+        </div>
       </main>
 
       <footer className="bg-gray-900 text-white py-12">

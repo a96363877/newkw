@@ -1,5 +1,7 @@
 import { Noto_Kufi_Arabic } from 'next/font/google';
 import type { Metadata } from 'next';
+import { CartProvider } from '@/components/cart-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ['arabic'],
@@ -18,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={notoKufiArabic.className}>{children}</body>
+      <body className={notoKufiArabic.className}>
+      <CartProvider>{children} 
+      <Toaster />
+  </CartProvider></body>
     </html>
   );
 }

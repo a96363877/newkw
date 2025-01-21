@@ -50,7 +50,7 @@ export default function FeatureCards() {
           </Card>
 
           <Card className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-            <CardContent className="p-6 flex items-center justify-between">
+            <CardContent className="p-6 flex items-center justify-between bg-blue-100">
               <div className="w-16 h-16 flex-shrink-0 bg-blue-100 rounded-full flex items-center justify-center">
                 <img src="/icon-4.webp" className="w-12 h-12" />
               </div>

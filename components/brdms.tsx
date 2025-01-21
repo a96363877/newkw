@@ -1,17 +1,16 @@
 import Image from 'next/image';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { Card, CardFooter } from './ui/card';
+import { Card } from './ui/card';
 
 export function Sdrads() {
   const brands = [
     '/ka.webp',
-    '/frozen-vegetables.webp',
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg',
+    '/alfakhir.webp',
+    '/allana.webp',
+    '/altaieb.webp',
+    '/bahcivan.webp',
+    '/baidar.webp',
+    '/countrysun.webp',
   ];
 
   return (
@@ -20,12 +19,10 @@ export function Sdrads() {
       <ScrollArea className="w-full whitespace-nowrap rounded-lg border">
         <div className="flex w-max space-x-4 p-4">
           {brands.map((brand, i) => (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-[#dbefff94] rounded-full">
-                <div className="w-24 h-24 mx-auto mb-4">
-                  <img src="/rice.webp" alt="s" />
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div className=" mx-auto mb-4  bg-[#dbefff94] hover:shadow-lg transition-shadow rounded-full">
+                  <img className=" w-24 h-24 rounded-full" src={brand} alt="s" />
                 </div>
-              </Card>
             </div>
           ))}
         </div>
