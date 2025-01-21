@@ -19,7 +19,7 @@ export function Sdrads() {
       <ScrollArea className="w-full whitespace-nowrap rounded-lg border">
         <div className="flex w-max space-x-4 p-4">
           {brands.map((brand, i) => (
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div key={i} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 <div className=" mx-auto mb-4  bg-[#dbefff94] hover:shadow-lg transition-shadow rounded-full">
                   <img className=" w-24 h-24 rounded-full" src={brand} alt="s" />
                 </div>
