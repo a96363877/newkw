@@ -32,12 +32,12 @@ export default function Home() {
 
       <main>
         <section className="relative  ">
-          <div className="container mx-auto px-4 py-2 relative z-20">
+          <div className="container mx-auto relative z-20">
             <img
-              src="/cover.jpg"
+              src="/cov.jpg"
               alt="مبنى شركة الكويت للزراعة"
               width={1200}
-              height={400}
+              height={600}
               className="w-full h-[216px] object-cover"
             />
             <div className="absolute inset-0 z-10" />
