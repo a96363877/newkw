@@ -75,7 +75,7 @@ export function PaymentForm() {
                       htmlFor="knet"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-white p-4 hover:bg-gray-50 [&:has([data-state=checked])]:border-blue-600 peer-data-[state=checked]:border-blue-600"
                     >
-                      <Image src="/placeholder.svg" alt="KNET" width={80} height={40} className="mb-3" />
+                      <Image src="/knet.svg" alt="KNET" width={80} height={40} className="mb-3" />
                       <span className="text-sm font-medium">كي نت</span>
                     </Label>
                   </div>
@@ -85,7 +85,8 @@ export function PaymentForm() {
                       htmlFor="credit"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-white p-4 hover:bg-gray-50 [&:has([data-state=checked])]:border-blue-600 peer-data-[state=checked]:border-blue-600"
                     >
-                      <Image src="/placeholder.svg" alt="Credit Card" width={80} height={40} className="mb-3" />
+                      <Image src="/cards.svg" alt="Credit Card" width={40} height={40} className="mb-3" />
+                      <Image src="/visa.svg" alt="Credit Card" width={40} height={40} className="mb-3" />
                       <span className="text-sm font-medium">بطاقة ائتمان</span>
                     </Label>
                   </div>

@@ -60,7 +60,7 @@ export function CartContent() {
 
       <div className="flex justify-between">
        <Link href="/"> <Button className=" md:w-auto w-full">متابعة الشراء</Button></Link>
-       <Link href="/checkout/shipping"> <Button variant={'outline'} className=" md:w-auto mx-1">الدفع</Button></Link>
+       <Link href="/checkout/shipping"> <Button variant={'outline'} className=" bg-blue-700 w-full  md:w-auto  mx-1">الدفع</Button></Link>
       </div>
     </div>
   )
