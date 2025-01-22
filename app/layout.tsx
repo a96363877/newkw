@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={notoKufiArabic.className} style={{zoom:0.80}}>
+      <body className={notoKufiArabic.className} style={{zoom:0.75}}>
       <CartProvider>
 
         <div> <header className="border-b ">

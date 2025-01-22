@@ -33,8 +33,8 @@ export function SpecialOfferCard({
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md">
       <CountdownTimer {...countdown} />
-      <div className="p-6">
-        <div className="aspect-square relative mb-4 p-6">
+      <div className="p-2">
+        <div className="aspect-[1/1] relative p-2">
           <img src={image || "/placeholder.svg"} alt={title}  className="object-contain" />
         </div>
         <div className="space-y-2 " >

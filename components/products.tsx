@@ -33,8 +33,8 @@ export function ProductCard({
           تخفيضات {discount ? `${discount}%` : ""}
         </Badge>
       )}
-      <CardContent className="p-6">
-        <div className="aspect-square relative mb-4 group-hover:scale-105 transition-transform duration-300">
+      <CardContent className="p-2">
+        <div className="aspect-[1/1] relative mb-4 group-hover:scale-105 transition-transform duration-300">
           <img
             src={image || "/placeholder.svg"}
             alt={title}
