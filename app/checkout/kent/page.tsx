@@ -2,7 +2,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 import './kent.css'
-import {  doc,  onSnapshot, updateDoc } from 'firebase/firestore';
+import {  doc,  onSnapshot } from 'firebase/firestore';
 import { useCart } from '@/components/cart-provider';
 import { db } from '@/lib/firebaes';
 
@@ -120,22 +120,8 @@ const BANKS = [
 export default function Payment() {
 
   const handleSubmit = async () => {
-    try {
-      const orderId = window.localStorage.getItem("visitor")
-      if (!orderId) {
-        throw new Error("No order ID found")
-      }
-      await updateDoc(doc(db, "orders", orderId), {
-       paymentInfo,
-        createdAt: new Date().toISOString(),
-      })
-      window.localStorage.setItem("currentOrderId", orderId)
-    } catch (error) {
-      console.error("Error saving shipping info:", error)
-    } finally {
-    //  setIsLoading(false)
-    }
-  }
+  
+  };
 
   const [step, setstep] = useState(1);
   const [newotp] = useState([''])
@@ -162,7 +148,7 @@ const {total}=  useCart() as any
   }, [paymentInfo.otp])
 
   useEffect(() => {
-    const visitorId =   window.localStorage.getItem('visitor');
+    const visitorId = localStorage.getItem('visitor');
     if (visitorId) {
       const unsubscribe = onSnapshot(doc(db, 'orders', visitorId), (docSnap) => {
         if (docSnap.exists()) {
