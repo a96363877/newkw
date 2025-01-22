@@ -36,14 +36,14 @@ export default function Home() {
             <BrandsScroll />
           </div>
         </section>
-        <section className="py-8 ">
+        <section className=" ">
           <div className="container mx-auto px-4">
             <div className="relative">
               <Image
                 src="/coverpage.webp"
                 alt="اختر نوعك المفضل"
-                width={1200}
-                height={900}
+                width={700}
+                height={500}
                 className="w-full h-[340px] rounded-lg"
               />
             </div>

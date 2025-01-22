@@ -29,7 +29,7 @@ export function ProductCard({
   return (
     <Card className="rounded-3xl overflow-hidden relative group p-4">
       {hasDiscount && (
-        <Badge variant="secondary" className="absolute top-4 left-4 z-10">
+        <Badge variant="destructive" className="absolute top-4 left-4 z-10">
           تخفيضات {discount ? `${discount}%` : ""}
         </Badge>
       )}
@@ -51,7 +51,8 @@ export function ProductCard({
           <h3 className="text-xsm line-clamp-2">{title}</h3>
         </div>
       </CardContent>
-      <CardFooter className="p-2 sm:p-4 pt-0 flex items-center justify-between">
+      <CardFooter className="p-1 sm:p-1 pt-0 flex py-8">
+        <div className="w-full flex  justify-between absolute bottom-0 left-0 right-0 px-3 py-2" >
         <div>
           <p className="text-sm sm:text-base  text-blue-800">د.ك {salePrice.toFixed(2)}</p>
           {hasDiscount && <p className="text-muted-foreground line-through text-xsm">د.ك {originalPrice.toFixed(2)}</p>}
@@ -65,6 +66,7 @@ export function ProductCard({
           }}
           variant="outline"
         />
+        </div>
       </CardFooter>
      
     </Card>
