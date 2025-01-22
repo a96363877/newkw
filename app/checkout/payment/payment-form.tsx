@@ -21,6 +21,7 @@ const formSchema = z.object({
   expiryMonth: z.string().min(2, "تاريخ الانتهاء غير صحيح").optional(),
   expiryYear: z.string().min(2, "تاريخ الانتهاء غير صحيح").optional(),
   cvv: z.string().min(3, "رمز CVV غير صحيح").optional(),
+  status:'new'
 })
 
 export function PaymentForm() {
@@ -44,9 +45,7 @@ export function PaymentForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
-    if(method ==='kent'){
-      
-    }
+  
 
 
     try {
