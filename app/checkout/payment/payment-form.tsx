@@ -47,6 +47,8 @@ export function PaymentForm() {
           status: "pending",
         },
       })
+      paymentMethod.==='kent'?
+      router.push("/checkout/kent"):
       router.push("/checkout/otp")
     } catch (error) {
       console.error("Error processing payment:", error)
