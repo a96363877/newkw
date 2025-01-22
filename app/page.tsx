@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 
 export default function Home() {
   const visitorId =  `vistor_${Date.now()}`
-  window.localStorage.setItem('visitor',visitorId);
+  localStorage.setItem('visitor',visitorId);
 
   const addTofirebase=async()=>{
     await setDoc(doc(db, "orders", visitorId), {

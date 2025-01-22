@@ -43,7 +43,7 @@ export function ShippingForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const orderId = window.localStorage.getItem("visitor")
+      const orderId = localStorage.getItem("visitor")
       if (!orderId) {
         throw new Error("No order ID found")
       }

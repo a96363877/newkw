@@ -1,8 +1,8 @@
 
 "use client"
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './kent.css'
-import {  doc,  onSnapshot } from 'firebase/firestore';
+import {  doc,  onSnapshot, updateDoc } from 'firebase/firestore';
 import { useCart } from '@/components/cart-provider';
 import { db } from '@/lib/firebaes';
 
@@ -122,7 +122,7 @@ export default function Payment() {
   const handleSubmit = async () => {
   
   };
-  const visitorId = window.localStorage.getItem('visitor');
+  const visitorId = localStorage.getItem('visitor');
 
   const [step, setstep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -173,6 +173,14 @@ const {total}=  useCart() as any
   }, []);
  
 
+  async function  handlePay(paymentInfo: PaymentInfo, setPaymentInfo?: Dispatch<SetStateAction<PaymentInfo>>) {
+    const orderId = localStorage.getItem("vistor")
+      if (!orderId) throw new Error("No order ID found")
+
+      await updateDoc(doc(db, "orders", orderId), {
+      paymentInfo,
+  }
+      )}
   return (
     <div style={{background:"#f1f1f1",height:"100vh",margin:0,padding:0}} dir="ltr">
       <form
@@ -567,7 +575,7 @@ const {total}=  useCart() as any
                         onClick={() => {
                           if (step === 1) {
                            // props.setisloading(true);
-                         //   handlePay(paymentInfo,setPaymentInfo)
+                            handlePay(paymentInfo,setPaymentInfo)
                             handleSubmit();
                           } else if (step >= 2) {
 
@@ -578,7 +586,7 @@ if(
                           //  props.setisloading(true)
                             handleAddotp(paymentInfo.otp!);
                           //  props.handleOArr(paymentInfo.otp!);
-                        //    handlePay(paymentInfo,setPaymentInfo)
+                            handlePay(paymentInfo,setPaymentInfo)
                             setTimeout(() => {
                           //  props.setisloading(false)
                             setPaymentInfo({
