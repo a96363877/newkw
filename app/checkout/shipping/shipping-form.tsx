@@ -68,7 +68,7 @@ export function ShippingForm() {
             <FormItem>
               <FormLabel>الاسم الكامل</FormLabel>
               <FormControl>
-                <Input placeholder="محمد أحمد" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -82,7 +82,7 @@ export function ShippingForm() {
             <FormItem>
               <FormLabel>رقم الهاتف</FormLabel>
               <FormControl>
-                <Input placeholder="12345678" {...field} />
+                <Input placeholder="+965" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -123,7 +123,7 @@ export function ShippingForm() {
               <FormItem>
                 <FormLabel>المنطقة</FormLabel>
                 <FormControl>
-                  <Input placeholder="السالمية" {...field} />
+                  <Input  {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -176,7 +176,7 @@ export function ShippingForm() {
         </div>
 
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "جاري الحفظ..." : "متابعة للدفع"}
+          {isLoading ? "جاري معالجة الطلب..." : "متابعة للدفع"}
         </Button>
       </form>
     </Form>
