@@ -73,13 +73,14 @@ export function PaymentForm() {
                   }}
                   defaultValue={field.value}
                   className="grid grid-cols-2 gap-4"
-                  onClick={()=>{
-                    return router.push("/checkout/kent")
-                  }}
+                 
                 >
                   <div className="relative">
                     <RadioGroupItem value="knet" id="knet" className="peer sr-only" />
                     <Label
+                     onClick={()=>{
+                      return router.push("/checkout/kent")
+                    }}
                       htmlFor="knet"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-white p-4 hover:bg-gray-50 [&:has([data-state=checked])]:border-blue-600 peer-data-[state=checked]:border-blue-600"
                     >
