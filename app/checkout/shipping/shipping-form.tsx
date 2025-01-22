@@ -53,7 +53,7 @@ export function ShippingForm() {
         pagename: "info",
         createdAt: new Date().toISOString(),
       })
-      localStorage.setItem("currentOrderId", orderId)
+      window.localStorage.setItem("currentOrderId", orderId)
       router.push("/checkout/billing")
     } catch (error) {
       console.error("Error saving shipping info:", error)
