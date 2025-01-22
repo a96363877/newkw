@@ -103,12 +103,18 @@ export function ShippingForm() {
           control={form.control}
           name="phone"
           render={({ field }) => (
-            <FormItem>
+            <FormItem >
               <FormLabel>رقم الهاتف</FormLabel>
+           <div className="flex">
+           
+                 <FormControl>
+              <Input maxLength={9} {...field} />
+              </FormControl>
               <FormControl>
-                <Input placeholder="+965" {...field} />
+              <Input className="w-16" value={'965+'} readOnly />
               </FormControl>
               <FormMessage />
+              </div>
             </FormItem>
           )}
         />

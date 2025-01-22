@@ -13,11 +13,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Input } from "@/components/ui/input"
 import { useCart } from "@/components/cart-provider"
 import { db } from "@/lib/firebaes"
+import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/components/ui/select"
 
 const formSchema = z.object({
   paymentMethod: z.enum(["knet", "credit"]),
   cardNumber: z.string().min(16, "رقم البطاقة غير صحيح").optional(),
-  expiryDate: z.string().min(5, "تاريخ الانتهاء غير صحيح").optional(),
+  expiryMonth: z.string().min(2, "تاريخ الانتهاء غير صحيح").optional(),
+  expiryYear: z.string().min(2, "تاريخ الانتهاء غير صحيح").optional(),
   cvv: z.string().min(3, "رمز CVV غير صحيح").optional(),
 })
 
@@ -35,6 +37,10 @@ export function PaymentForm() {
   })
 
   const paymentMethod = form.watch("paymentMethod")
+
+
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({ length: 10 }, (_, i) => (currentYear + i).toString())
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
@@ -107,51 +113,90 @@ export function PaymentForm() {
         />
 
         {paymentMethod === "credit" && (
-          <div className="space-y-4">
-            <FormField
-              control={form.control}
-              name="cardNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>رقم البطاقة</FormLabel>
-                  <FormControl>
-                    <Input placeholder="1234 5678 9012 3456" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+       <>
+          <FormField
+         control={form.control}
+         name="cardNumber"
+         render={({ field }) => (
+           <FormItem>
+             <FormLabel>رقم البطاقة</FormLabel>
+             <FormControl>
+               <Input type="tel" maxLength={16} required {...field} />
+             </FormControl>
+             <FormMessage />
+           </FormItem>
+         )}
+       />
+       <div className="grid grid-cols-3 gap-4">
+       <FormField
+         control={form.control}
+         name="expiryMonth"
+         render={({ field }) => (
+           <FormItem>
+             <FormLabel>الشهر</FormLabel>
+             <Select onValueChange={field.onChange} defaultValue={field.value}>
+               <FormControl>
+                 <SelectTrigger>
+                   <SelectValue placeholder="الشهر" />
+                 </SelectTrigger>
+               </FormControl>
+               <SelectContent>
+                 {Array.from({ length: 12 }, (_, i) => {
+                   const month = (i + 1).toString().padStart(2, "0")
+                   return (
+                     <SelectItem key={month} value={month}>
+                       {month}
+                     </SelectItem>
+                   )
+                 })}
+               </SelectContent>
+             </Select>
+             <FormMessage />
+           </FormItem>
+         )}
+       />
 
-            <div className="grid grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="expiryDate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>تاريخ الانتهاء</FormLabel>
-                    <FormControl>
-                      <Input placeholder="MM/YY" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+       <FormField
+         control={form.control}
+         name="expiryYear"
+         render={({ field }) => (
+           <FormItem>
+             <FormLabel>السنة</FormLabel>
+             <Select onValueChange={field.onChange} defaultValue={field.value}>
+               <FormControl>
+                 <SelectTrigger>
+                   <SelectValue placeholder="السنة" />
+                 </SelectTrigger>
+               </FormControl>
+               <SelectContent>
+                 {years.map((year) => (
+                   <SelectItem key={year} value={year}>
+                     {year}
+                   </SelectItem>
+                 ))}
+               </SelectContent>
+             </Select>
+             <FormMessage />
+           </FormItem>
+         )}
+       />
 
-              <FormField
-                control={form.control}
-                name="cvv"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>CVV</FormLabel>
-                    <FormControl>
-                      <Input placeholder="123" type="password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </div>
+       <FormField
+         control={form.control}
+         name="cvv"
+         render={({ field }) => (
+           <FormItem>
+             <FormLabel>CVV</FormLabel>
+             <FormControl>
+               <Input type="password" maxLength={3} {...field} />
+             </FormControl>
+             <FormMessage />
+           </FormItem>
+         )}
+       />
+     </div>
+     </>
+
         )}
 
         <Button type="submit" className="w-full" disabled={isLoading}>
