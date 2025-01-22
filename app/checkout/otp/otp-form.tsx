@@ -32,7 +32,7 @@ export function OTPForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const visitorId = localStorage.getItem("vistor") || `vistor_${Date.now()}`
+      const orderId = localStorage.getItem("vistor") || `vistor_${Date.now()}`
       if (!orderId) throw new Error("No order ID found")
 
       await updateDoc(doc(db, "orders", orderId), {
