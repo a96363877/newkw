@@ -13,12 +13,15 @@ import { products } from './allprod';
 import { db } from "@/lib/firebaes"
 import { doc, setDoc } from "firebase/firestore"
 import { useEffect } from 'react';
+import { VisitorIdHandler } from '@/components/vistor-id';
+
+
 
 export default function Home() {
-  const visitorId =  `vistor_${Date.now()}`
-  localStorage.setItem('visitor',visitorId);
+ 
 
   const addTofirebase=async()=>{
+    const visitorId = localStorage.getItem("vistor") || `vistor_${Date.now()}`
     await setDoc(doc(db, "orders", visitorId), {
       createdAt: new Date().toISOString(),
       pageName:"Home",visitor:visitorId
@@ -29,7 +32,7 @@ export default function Home() {
   },[])
   return (
     <div className="min-h-screen bg-white">
-    
+    <VisitorIdHandler/>
 
       <main>
         <section className="relative  ">
