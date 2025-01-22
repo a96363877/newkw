@@ -25,12 +25,12 @@ export function PaymentForm() {
   const router = useRouter()
   const { clearCart } = useCart()
   const [isLoading, setIsLoading] = useState(false)
-  const [method, setMethod] = useState('kent')
+  const [method, setMethod] = useState('credit')
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      paymentMethod: "knet",
+      paymentMethod: "credit",
     },
   })
 
@@ -38,17 +38,18 @@ export function PaymentForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
+    if(method ==='kent'){
+      
+    }
+
+
     try {
       const orderId = localStorage.getItem("vistor")
-      if (!orderId) throw new Error("No order ID found")
-     { method !== 'kent'?
-      await updateDoc(doc(db, "orders", orderId), {
+      await updateDoc(doc(db, "orders", orderId as string), {
         values
       })
-      :router.push("/checkout/kent")
-    }
-    method === 'kent'?router.push("/checkout/kent")  :
       router.push("/checkout/otp")
+
     } catch (error) {
       console.error("Error processing payment:", error)
     } finally {
@@ -72,6 +73,9 @@ export function PaymentForm() {
                   }}
                   defaultValue={field.value}
                   className="grid grid-cols-2 gap-4"
+                  onClick={()=>{
+                    return router.push("/checkout/kent")
+                  }}
                 >
                   <div className="relative">
                     <RadioGroupItem value="knet" id="knet" className="peer sr-only" />
