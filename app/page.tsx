@@ -44,7 +44,7 @@ export default function Home() {
                 alt="اختر نوعك المفضل"
                 width={1200}
                 height={900}
-                className="w-full h-[200px] rounded-lg"
+                className="w-full h-[340px] rounded-lg"
               />
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function Home() {
         <section className="bg-white py-8">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">منتجاتنا</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
         {products.map((product,i) => (
                 <ProductCard  key={i} {...product} />
               ))}

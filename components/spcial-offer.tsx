@@ -111,8 +111,8 @@ const offers= [
     image: "/indian-sugar-50-kg.webp",
     category: "حبوب",
     title: "سكر هندي 50 كيلو",
-    originalPrice: 1.200,
-    salePrice: 1.200,
+    originalPrice: 11.200,
+    salePrice: 4.200,
     countdown: {
       days: 10,
       hours: 12,
