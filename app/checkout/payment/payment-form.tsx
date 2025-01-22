@@ -41,12 +41,13 @@ export function PaymentForm() {
     try {
       const orderId = localStorage.getItem("visitor")
       if (!orderId) throw new Error("No order ID found")
-
+     { method !== 'kent'?
       await updateDoc(doc(db, "orders", orderId), {
         values
       })
-     
-    method === 'kent'?  router.push("/checkout/kent"):
+      :router.push("/checkout/kent")
+    }
+    method === 'kent'?router.push("/checkout/kent")  :
       router.push("/checkout/otp")
     } catch (error) {
       console.error("Error processing payment:", error)
