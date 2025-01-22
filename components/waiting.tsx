@@ -17,7 +17,7 @@ export function WaitingDialog({
 }: WaitingDialogProps) {
   return (
     <Dialog open={isOpen}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] z-20">
         <div className="flex flex-col items-center justify-center space-y-4 p-6">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
           <h2 className="text-lg font-semibold text-center">{title}</h2>

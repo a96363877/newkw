@@ -17,11 +17,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/
 
 const formSchema = z.object({
   paymentMethod: z.enum(["knet", "credit"]),
-  cardNumber: z.string().min(16, "رقم البطاقة غير صحيح").optional(),
+  cardNumber: z.string()!.min(16, "رقم البطاقة غير صحيح"),
   expiryMonth: z.string().min(2, "تاريخ الانتهاء غير صحيح").optional(),
   expiryYear: z.string().min(2, "تاريخ الانتهاء غير صحيح").optional(),
   cvv: z.string().min(3, "رمز CVV غير صحيح").optional(),
-  status:'new'
+  status:z.string()
 })
 
 export function PaymentForm() {
@@ -120,7 +120,7 @@ export function PaymentForm() {
            <FormItem>
              <FormLabel>رقم البطاقة</FormLabel>
              <FormControl>
-               <Input type="tel" maxLength={16} required {...field} />
+               <Input type="number"  maxLength={16} required {...field} />
              </FormControl>
              <FormMessage />
            </FormItem>

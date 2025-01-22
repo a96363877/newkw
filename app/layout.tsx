@@ -8,6 +8,7 @@ import { CartButton } from '@/components/cart-btn';
 import { Button } from '@/components/ui/button';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import Head from 'next/head';
+import { WaitingDialog } from '@/components/waiting';
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ['arabic'],
@@ -116,8 +117,6 @@ export default function RootLayout({
               <p>العنوان: ص.ب 22228 الصفاة 13083</p>
               <p>الكويت</p>
               <p>ساعات العمل: 8:00 ... 3:00</p>
-              <p dir="ltr">+965 1234 5678</p>
-              <p>info@example.com</p>
             </div>
           </div>
         </div>
@@ -147,7 +146,7 @@ export default function RootLayout({
             </Link>
           </div>
           <Link
-            href="https://wa.me/1234567890"
+            href="https://wa.me/"
             className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">

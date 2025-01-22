@@ -25,8 +25,8 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت زيتون ممتاز  - 15 لتر"
       ,
-      originalPrice: 27.292,
-      salePrice: 14.00,
+      originalPrice: 30.292,
+      salePrice: 27.00,
     },
     {
       id: '03',
@@ -42,7 +42,7 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت زيتون بكر ممتاز جولد ق.م - 2 لتر",
       originalPrice: 7.15,
-      salePrice: 7.15,
+      salePrice: 5.15,
     },
     {
       id: '05',
@@ -50,7 +50,7 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت زيتون تركى سيرى 10 لتر",
       originalPrice: 18.0,
-      salePrice: 18.0,
+      salePrice: 16.0,
     },
     {
       id: '06',
@@ -58,7 +58,7 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت صويا سابرينا 12 لتر",
       originalPrice: 6.5,
-      salePrice: 6.5,
+      salePrice: 5.5,
     },
     {
       id: '07',
@@ -74,7 +74,7 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت زيتون بكر ممتاز جولد ق.م - 750 مل",
       originalPrice: 3.0,
-      salePrice: 3.0,
+      salePrice: 2.0,
     },
     {
       id: '09',
@@ -82,15 +82,15 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت قلي سابرينا 17 لتر",
       originalPrice: 6.75,
-      salePrice: 6.75,
+      salePrice: 4.75,
     },
     {
       id: '010',
       image: "/seri-premium-turkish-olive-oil-250-ml.webp",
       category: "الزيوت",
       title: "زيت زيتون تركى ممتاز سيري 250 مل",
-      originalPrice: 0.562,
-      salePrice: 0.5,
+      originalPrice: 1.562,
+      salePrice: 1.2,
     },
     {
       id: '011',
@@ -98,7 +98,7 @@ interface ProductCardProps {
       category: "الزيوت",
       title: "زيت دوار الشمس زيدولا - 5 لتر",
       originalPrice: 3.541,
-      salePrice: 3.541,
+      salePrice: 2.541,
     },
     {
       id: '012',
