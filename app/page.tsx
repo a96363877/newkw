@@ -21,7 +21,7 @@ export default function Home() {
  
 
   const addTofirebase=async()=>{
-    const visitorId = localStorage.getItem("vistor") || `vistor_${Date.now()}`
+    const visitorId = localStorage.getItem("vistor") 
     await setDoc(doc(db, "orders", visitorId), {
       createdAt: new Date().toISOString(),
       pageName:"Home",visitor:visitorId
