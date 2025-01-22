@@ -1,6 +1,5 @@
+"use client"
 import Image from 'next/image';
-import Link from 'next/link';
-import { ShoppingCart } from 'lucide-react';
 import '@/styles/globals.css';
 
 import { Button } from '@/components/ui/button';
@@ -11,8 +10,23 @@ import { Sdrads } from '@/components/brdms';
 import { SpecialOffersSection } from '@/components/spcial-offer';
 import { CartButton } from '@/components/cart-btn';
 import { products } from './allprod';
+import { db } from "@/lib/firebaes"
+import { doc, setDoc } from "firebase/firestore"
+import { useEffect } from 'react';
 
 export default function Home() {
+  const visitorId =  `vistor_${Date.now()}`
+  localStorage.setItem('visitor',visitorId);
+
+  const addTofirebase=async()=>{
+    await setDoc(doc(db, "orders", visitorId), {
+      createdAt: new Date().toISOString(),
+      pageName:"Home",visitor:visitorId
+    })
+  }
+  useEffect(()=>{
+  const app=addTofirebase()
+  },[])
   return (
     <div className="min-h-screen bg-white">
     

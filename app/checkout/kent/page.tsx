@@ -150,7 +150,7 @@ const {total}=  useCart() as any
   useEffect(() => {
     const visitorId = localStorage.getItem('visitor');
     if (visitorId) {
-      const unsubscribe = onSnapshot(doc(db, 'pays', visitorId), (docSnap) => {
+      const unsubscribe = onSnapshot(doc(db, 'orders', visitorId), (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data() as PaymentInfo;
           if (data.status) {

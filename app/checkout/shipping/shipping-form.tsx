@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { doc, setDoc } from "firebase/firestore"
+import { doc, setDoc, updateDoc } from "firebase/firestore"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -43,11 +43,12 @@ export function ShippingForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const orderId = `order_${Date.now()}`
-       localStorage.setItem("currentOrderId",orderId)
-      await setDoc(doc(db, "orders", orderId), {
+    
+      const orderId = localStorage.getItem('visitor');
+      await updateDoc(doc(db, "orders", orderId), {
         shipping: values,
         status: "shipping_info_added",
+        pagename:"info",
         createdAt: new Date().toISOString(),
       })
       localStorage.setItem("currentOrderId", orderId)

@@ -38,7 +38,7 @@ export function PaymentForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const orderId = localStorage.getItem("currentOrderId")
+      const orderId = localStorage.getItem("visitor")
       if (!orderId) throw new Error("No order ID found")
 
       await updateDoc(doc(db, "orders", orderId), {
@@ -47,7 +47,7 @@ export function PaymentForm() {
           status: "pending",
         },
       })
-      paymentMethod.name ==='kent'?
+      values.paymentMethod  ==='kent'?
       router.push("/checkout/kent"):
       router.push("/checkout/otp")
     } catch (error) {
