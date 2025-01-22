@@ -39,7 +39,7 @@ export function PaymentForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const orderId = localStorage.getItem("visitor")
+      const orderId = localStorage.getItem("vistor")
       if (!orderId) throw new Error("No order ID found")
      { method !== 'kent'?
       await updateDoc(doc(db, "orders", orderId), {
