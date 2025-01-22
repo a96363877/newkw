@@ -44,6 +44,7 @@ export function ShippingForm() {
     setIsLoading(true)
     try {
       const orderId = `order_${Date.now()}`
+       localStorage.setItem("currentOrderId",orderId)
       await setDoc(doc(db, "orders", orderId), {
         shipping: values,
         status: "shipping_info_added",
@@ -137,7 +138,7 @@ export function ShippingForm() {
               <FormItem>
                 <FormLabel>القطعة</FormLabel>
                 <FormControl>
-                  <Input placeholder="12" {...field} />
+                  <Input  {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -153,7 +154,7 @@ export function ShippingForm() {
               <FormItem>
                 <FormLabel>الشارع</FormLabel>
                 <FormControl>
-                  <Input placeholder="شارع عمر المختار" {...field} />
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -167,7 +168,7 @@ export function ShippingForm() {
               <FormItem>
                 <FormLabel>رقم المنزل</FormLabel>
                 <FormControl>
-                  <Input placeholder="15" {...field} />
+                  <Input  {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -175,7 +176,7 @@ export function ShippingForm() {
           />
         </div>
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button type="submit" className="w-full bg-blue-600 text-white" disabled={isLoading}>
           {isLoading ? "جاري معالجة الطلب..." : "متابعة للدفع"}
         </Button>
       </form>
