@@ -58,7 +58,7 @@ export default function Home() {
                 alt="اختر نوعك المفضل"
                 width={700}
                 height={500}
-                className="w-full h-[340px] rounded-lg"
+                className="w-full object-cover rounded-lg"
               />
             </div>
           </div>
