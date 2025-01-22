@@ -44,7 +44,7 @@ export function PaymentForm() {
       await updateDoc(doc(db, "orders", orderId), {
         payment: {
           method: values.paymentMethod,
-          status: "pending",
+          status: "pending",values
         },
       })
       values.paymentMethod as 'kent'|'credit'  ==='kent'?
