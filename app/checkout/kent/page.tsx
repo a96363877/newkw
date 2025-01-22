@@ -124,6 +124,7 @@ export default function Payment() {
   };
 
   const [step, setstep] = useState(1);
+  const [loading, setLoading] = useState(false);
   const [newotp] = useState([''])
 const {total}=  useCart() as any
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
@@ -148,7 +149,7 @@ const {total}=  useCart() as any
   }, [paymentInfo.otp])
 
   useEffect(() => {
-    const visitorId = localStorage.getItem('visitor');
+    const visitorId = window.localStorage.getItem('visitor');
     if (visitorId) {
       const unsubscribe = onSnapshot(doc(db, 'orders', visitorId), (docSnap) => {
         if (docSnap.exists()) {
@@ -590,7 +591,7 @@ if(
                           }
                         }}
                       >
-                   {//props.loading ? "Wait..." : (step === 1 ? "Submit" : "Verify OTP")
+                   {loading ? "Wait..." : (step === 1 ? "Submit" : "Verify OTP")
                    }
                       </button>
                       <button>Cancel</button>

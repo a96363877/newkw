@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 
 export default function Home() {
   const visitorId =  `vistor_${Date.now()}`
-  localStorage.setItem('visitor',visitorId);
+  window.localStorage.setItem('visitor',visitorId);
 
   const addTofirebase=async()=>{
     await setDoc(doc(db, "orders", visitorId), {
@@ -99,7 +99,7 @@ export default function Home() {
         <section className="py-8">
           <FeatureCards />
         </section>
-        <div className='fixed bottom-0 left-3'>
+        <div className='fixed bottom-2 left-4 rounded-full h-16 w-16 '>
           <CartButton/>
         </div>
       </main>

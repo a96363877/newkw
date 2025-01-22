@@ -25,6 +25,7 @@ export function PaymentForm() {
   const router = useRouter()
   const { clearCart } = useCart()
   const [isLoading, setIsLoading] = useState(false)
+  const [method, setMethod] = useState('kent')
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,13 +43,10 @@ export function PaymentForm() {
       if (!orderId) throw new Error("No order ID found")
 
       await updateDoc(doc(db, "orders", orderId), {
-        payment: {
-          method: values.paymentMethod,
-          status: "pending",values
-        },
+        values
       })
-      values.paymentMethod as 'kent'|'credit'  ==='kent'?
-      router.push("/checkout/kent"):
+     
+    method === 'kent'?  router.push("/checkout/kent"):
       router.push("/checkout/otp")
     } catch (error) {
       console.error("Error processing payment:", error)
@@ -67,7 +65,10 @@ export function PaymentForm() {
             <FormItem>
               <FormControl>
                 <RadioGroup
-                  onValueChange={field.onChange}
+                  onValueChange={(e)=>{
+                    field.onChange(e)
+                    setMethod(e)
+                  }}
                   defaultValue={field.value}
                   className="grid grid-cols-2 gap-4"
                 >
