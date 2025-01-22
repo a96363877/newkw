@@ -13,24 +13,24 @@ interface ProductCardProps {
   export const products: ProductCardProps[] = [ {
     
       id: '01',
-      image: "/rifi-virgin-olive-oil--2-liter.webp",
+      image: "/of1.jpg",
       category: "الزيوت",
-      title: "زيت زيتون ممتاز ريفي - 2 لتر",
-      originalPrice: 28.1,
+      title: "زيت زيتون فلسسطيني  - 15 لتر",
+      originalPrice: 27.0,
       salePrice: 25.1,
     },
     {
       id: '02',
-      image: "/435-20501302.webp  ",
+      image: "/of3.jpg  ",
       category: "الزيوت",
-      title: "زيت زيتون بكر ممتاز جولد ق.م - 500 م"
+      title: "زيت زيتون ممتاز  - 15 لتر"
       ,
-      originalPrice: 3.292,
-      salePrice: 3.292,
+      originalPrice: 27.292,
+      salePrice: 14.00,
     },
     {
       id: '03',
-      image: "/405-20501213.webp",
+      image: "/premium-turkish-olive-oil-cere-500-ml.webp",
       category: "الزيوت",
       title: "زيت زيتون تركي ممتاز - 500 مل",
       originalPrice: 1.008,
@@ -118,7 +118,7 @@ interface ProductCardProps {
     },
     {
       id: '014',
-      image: "/rifi-virgin-olive-oil--2-liter (1).webp",
+      image: "/rifi-virgin-olive-oil--2-liter.webp",
       category: "الزيوت",
       title: "زيت زيتون ممتاز ريفي - 2 لتر",
       originalPrice: 5.165,
@@ -132,16 +132,7 @@ interface ProductCardProps {
       originalPrice: 3.65,
       salePrice: 3.65,
     },
-    {
-      id: "1",
-      image: "/Summarizebeverage.webp",
-      title: "زيت زيتون تركي ممتاز - 2 لتر",
-      salePrice: 2.99,
-      originalPrice: 3.99,
-      isSpecialOffer: true,
-      category: "مشروبات",
-      discount: 10,
-    },
+   
     {
       id: "2",
       image: "/al-fakhir-cooking-oil-1-5l.webp",
@@ -150,15 +141,7 @@ interface ProductCardProps {
       originalPrice: 4.00,
       category: "وجبات خفيفة",
     },
-    {
-      id: "3",
-      image: "/bahcivan.webp",
-      title: "بحجيبان",
-      salePrice: 6.75,
-      originalPrice: 8.00,
-      isSpecialOffer: false,
-      category: "توابل",
-    },
+ 
     {
       id: "4",
       image: "/arbash-basmati-rce-20-kg.webp",
@@ -186,14 +169,6 @@ interface ProductCardProps {
       discount: 20,
     },
     {
-      id: "7",
-      image: "/altaieb.webp",
-      title: "الطيّب",
-      salePrice: 5.40,
-      originalPrice: 6.00,
-      category: "وجبات خفيفة",
-    },
-    {
       id: "8",
       image: "/al-salam-rice-5-kg.webp",
       title: "أرز السلام 5 كجم",
@@ -201,20 +176,8 @@ interface ProductCardProps {
       originalPrice: 12.00,
       category: "أرز",
     },
-    {
-      id: "9",
-      image: "/allana.webp",
-      title: "ألانا",
-      salePrice: 4.50,
-      category: "وجبات خفيفة",
-    },
-    {
-      id: "10",
-      image: "/alfakhir.webp",
-      title: "الفاخر",
-      salePrice: 7.25,
-      category: "توابل",
-    },
+
+
     {
       id: "11",
       image: "/zeeba-primium-basmati-rice.webp",
@@ -247,13 +210,7 @@ interface ProductCardProps {
       originalPrice: 25.00,
       category: "أرز",
     },
-    {
-      id: "15",
-      image: "/zedola.webp",
-      title: "زيدولا",
-      salePrice: 4.25,
-      category: "وجبات خفيفة",
-    },
+
     {
       id: "16",
       image: "/zain-alphonso-mango.webp",
@@ -270,13 +227,7 @@ interface ProductCardProps {
       originalPrice: 8.00,
       category: "توابل",
     },
-    {
-      id: "18",
-      image: "/vip.webp",
-      title: "في آي بي",
-      salePrice: 4.50,
-      category: "وجبات خفيفة",
-    },
+ 
     {
       id: "19",
       image: "/vietnamese-rice---1-kilo.webp",
@@ -285,30 +236,8 @@ interface ProductCardProps {
       originalPrice: 7.00,
       category: "أرز",
     },
-    {
-      id: "20",
-      image: "/tyson.webp",
-      title: "تايسون",
-      salePrice: 8.99,
-      originalPrice: 10.00,
-      category: "لحوم ودواجن",
-    },
-    {
-      id: "21",
-      image: "/turkey.webp",
-      title: "ديك رومي",
-      salePrice: 15.00,
-      originalPrice: 18.00,
-      category: "لحوم ودواجن",
-    },
-    {
-      id: "22",
-      image: "/torrent.webp",
-      title: "تورنيدو",
-      salePrice: 7.50,
-      originalPrice: 9.00,
-      category: "مشروبات",
-    },
+
+   
     {
       id: "23",
       image: "/thai-parboiled-rice---royal.webp",

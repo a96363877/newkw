@@ -22,13 +22,14 @@ export function AddToCartButton({ product, variant = "default" }: AddToCartButto
   const handleAddToCart = () => {
     addItem(product as any)
     toast({
+      variant: "default",
       title: "تمت الإضافة إلى السلة",
       description: `تمت إضافة ${product.title} إلى سلة التسوق`,
     })
   }
 
   return (
-    <Button onClick={handleAddToCart} variant={variant} className="mr-auto bg-blue-600 text-white">
+    <Button size={'sm'} onClick={handleAddToCart} variant={variant} className="mr-auto bg-blue-600 hover:bg-orange-400 hover:text-white text-white">
       <ShoppingCart/>
       إضافة    
       </Button>

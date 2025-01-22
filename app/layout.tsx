@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={notoKufiArabic.className}>
+      <body className={notoKufiArabic.className} style={{zoom:0.80}}>
       <CartProvider>{children} 
-      <Toaster />
+      <Toaster  />
   </CartProvider></body>
     </html>
   );

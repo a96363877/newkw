@@ -16,8 +16,17 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <header className="border-b">
+       
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+  
+        <button className="lg:hidden">
+            <div className="space-y-1.5">
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+            </div>
+          </button>
+                  <Link href="/" className="flex items-center gap-2">
             <Image
               src="/vercel.svg"
               alt="شركة الكويت للزراعة"
@@ -57,7 +66,7 @@ export default function Home() {
                 alt="اختر نوعك المفضل"
                 width={1200}
                 height={900}
-                className="w-full h-[300px] rounded-lg"
+                className="w-full h-[200px] rounded-lg"
               />
             </div>
           </div>
@@ -66,8 +75,8 @@ export default function Home() {
         <section className="bg-white py-8">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">منتجاتنا</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {products.map((product, i) => (
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        {products.map((product,i) => (
                 <ProductCard  key={i} {...product} />
               ))}
             </div>

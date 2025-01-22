@@ -39,7 +39,6 @@ export function ProductCard({
             src={image || "/placeholder.svg"}
             alt={title}
             className="object-contain"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           {isSpecialOffer && (
             <Badge variant="destructive" className="absolute top-2 right-2">
@@ -49,12 +48,12 @@ export function ProductCard({
         </div>
         <div className="space-y-2">
           <p className="text-muted-foreground text-sm">{category}</p>
-          <h3 className="font-semibold text-lg line-clamp-2">{title}</h3>
+          <h3 className="text-sm line-clamp-2">{title}</h3>
         </div>
       </CardContent>
-      <CardFooter className="p-6 pt-0 flex justify-between items-center">
+      <CardFooter className="p-2 sm:p-4 pt-0 flex items-center justify-between">
         <div>
-          <p className="font-semibold text-blue-800 text-sm">د.ك {salePrice.toFixed(2)}</p>
+          <p className="text-sm sm:text-base font-bold text-blue-800">د.ك {salePrice.toFixed(2)}</p>
           {hasDiscount && <p className="text-muted-foreground line-through text-sm">د.ك {originalPrice.toFixed(2)}</p>}
         </div>
         <AddToCartButton
@@ -67,6 +66,7 @@ export function ProductCard({
           variant="outline"
         />
       </CardFooter>
+     
     </Card>
   )
 }
