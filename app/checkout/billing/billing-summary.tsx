@@ -33,10 +33,6 @@ export function BillingSummary() {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const orderId = localStorage.getItem("currentOrderId")
-        if (!orderId) {
-          throw new Error("No order ID found")
-        }
           setOrderDetails(items)
       } catch (error) {
         console.error("Error fetching order details:", error)
