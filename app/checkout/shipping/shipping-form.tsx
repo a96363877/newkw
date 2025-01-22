@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { doc, updateDoc } from "firebase/firestore"
+import { doc, setDoc, getDoc } from "firebase/firestore"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -47,13 +47,33 @@ export function ShippingForm() {
       if (!orderId) {
         throw new Error("No order ID found")
       }
-      await updateDoc(doc(db, "orders", orderId), {
-        shipping: values,
-        status: "shipping_info_added",
-        pagename: "info",
-        createdAt: new Date().toISOString(),
-      })
-      localStorage.setItem("currentOrderId", orderId)
+
+      const orderRef = doc(db, "orders", orderId)
+      const orderDoc = await getDoc(orderRef)
+
+      if (orderDoc.exists()) {
+        // Document exists, update it
+        await setDoc(
+          orderRef,
+          {
+            shipping: values,
+            status: "shipping_info_added",
+            pagename: "info",
+            createdAt: new Date().toISOString(),
+          },
+          { merge: true },
+        )
+      } else {
+        // Document doesn't exist, create it
+        await setDoc(orderRef, {
+          shipping: values,
+          status: "shipping_info_added",
+          pagename: "info",
+          createdAt: new Date().toISOString(),
+          visitor: orderId,
+        })
+      }
+
       router.push("/checkout/billing")
     } catch (error) {
       console.error("Error saving shipping info:", error)
