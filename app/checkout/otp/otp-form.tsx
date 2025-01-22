@@ -44,7 +44,6 @@ export function OTPForm() {
       })
       clearCart()
       localStorage.removeItem("currentOrderId")
-      router.push("/checkout/success")
     } catch (error) {
       console.error("Error verifying OTP:", error)
     } finally {
