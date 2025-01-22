@@ -47,7 +47,7 @@ export function PaymentForm() {
           status: "pending",
         },
       })
-      values.paymentMethod  ==='kent'?
+      values.paymentMethod as 'kent'|'credit'  ==='kent'?
       router.push("/checkout/kent"):
       router.push("/checkout/otp")
     } catch (error) {
