@@ -33,18 +33,20 @@ export function SpecialOfferCard({
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md">
       <CountdownTimer {...countdown} />
-      <div className="p-4">
-        <div className="aspect-square relative mb-4">
+      <div className="p-6">
+        <div className="aspect-square relative mb-4 p-6">
           <img src={image || "/placeholder.svg"} alt={title}  className="object-contain" />
         </div>
-        <div className="space-y-2">
-          <div className="text-gray-500 text-sm">{category}</div>
-          <h3 className="font-medium line-clamp-2 min-h-[48px]">{title}</h3>
+        <div className="space-y-2 " >
+          <div className="text-gray-500 text-xsm">{category}</div>
+          <h3 className="font-xsm line-clamp-2 ">{title}</h3>
           <div className="flex items-center gap-2">
-            <span className="text-blue-600 font-bold">د.ك {salePrice.toFixed(3)}</span>
-            <span className="text-gray-400 line-through text-sm">د.ك {originalPrice.toFixed(3)}</span>
+           <div className="flex flex-col">
+           <span className="text-blue-600 ">د.ك {salePrice.toFixed(2)}</span>
+            <span className="text-gray-400 line-through text-xsm">د.ك {originalPrice.toFixed(2)}</span>
+           </div>
             {soldOut ? (
-            <div className="w-full py-2 px-4 text-center bg-gray-100 text-gray-500 rounded-md">بيعت كل القطع</div>
+            <div className="w-full  px-4 text-center bg-gray-100 text-gray-500 rounded-md">بيعت كل القطع</div>
           ) : ( 
             <AddToCartButton
               product={{
