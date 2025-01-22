@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 interface CartItem {
   id: string
   title: string
-  price: number
+  salePrice: number |string
   image: string
   quantity: number
 }
@@ -61,7 +61,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0)
-  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.salePrice! as string) * item.quantity, 0)
 
   return (
     <CartContext.Provider

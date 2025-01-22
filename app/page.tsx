@@ -15,29 +15,7 @@ import { products } from './allprod';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <header className="border-b">
-       
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-  
-        <button className="lg:hidden">
-            <div className="space-y-1.5">
-              <span className="block w-6 h-0.5 bg-gray-600"></span>
-              <span className="block w-6 h-0.5 bg-gray-600"></span>
-              <span className="block w-6 h-0.5 bg-gray-600"></span>
-            </div>
-          </button>
-                  <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/vercel.svg"
-              alt="شركة الكويت للزراعة"
-              width={180}
-              height={50}
-              className="h-12 w-auto"
-            />
-          </Link>
-         <CartButton/>
-        </div>
-      </header>
+    
 
       <main>
         <section className="relative  ">
@@ -112,33 +90,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">من نحن</h3>
-              <p className="text-gray-400">
-                شركة الكويت للزراعة هي شركة زراعية رائدة تأسست عام ١٩٦٨، تقدم
-                منتجات عالية الجودة للعملاء في جميع أنحاء الكويت.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">اتصل بنا</h3>
-              <p className="text-gray-400">البريد الإلكتروني: info@kac.com</p>
-              <p className="text-gray-400">الهاتف: ٥٦٧٨ ١٢٣٤ ٩٦٥+</p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">تابعنا</h3>
-              <div className="flex gap-4">
-                <Button variant="ghost" size="icon">
-                  <span className="sr-only">فيسبوك</span>
-                  {/* Add social media icons here */}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }

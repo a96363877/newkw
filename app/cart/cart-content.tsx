@@ -44,7 +44,7 @@ export function CartContent() {
                   </Button>
                 </div>
               </div>
-              <div className="text-left font-medium">د.ك {(item.price * item.quantity).toFixed(3)}</div>
+              <div className="text-left font-medium">د.ك {(parseFloat(item.salePrice as string) * item.quantity).toFixed(3)}</div>
             </div>
           ))}
         </div>
