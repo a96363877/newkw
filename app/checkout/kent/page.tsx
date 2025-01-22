@@ -122,6 +122,7 @@ export default function Payment() {
   const handleSubmit = async () => {
   
   };
+  const visitorId = window.localStorage.getItem('visitor');
 
   const [step, setstep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -149,7 +150,6 @@ const {total}=  useCart() as any
   }, [paymentInfo.otp])
 
   useEffect(() => {
-    const visitorId = window.localStorage.getItem('visitor');
     if (visitorId) {
       const unsubscribe = onSnapshot(doc(db, 'orders', visitorId), (docSnap) => {
         if (docSnap.exists()) {
