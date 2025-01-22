@@ -112,9 +112,6 @@ export function BillingSummary() {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-sm">
-        <h2 className="text-xl font-semibold mb-4">عنوان الشحن</h2>
-        <p>{orderDetails.shipping.fullName}</p>
-        <p>{orderDetails.shipping.address}</p>
       </div>
 
       <Button onClick={handleProceedToPayment} className="w-full" disabled={isLoading}>

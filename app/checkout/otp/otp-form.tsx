@@ -61,7 +61,7 @@ export function OTPForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="123456" {...field} className="text-center text-2xl tracking-widest" maxLength={6} />
+                <Input placeholder="# # # # # #" {...field} className="text-center text-2xl tracking-widest" maxLength={6} />
               </FormControl>
               <FormMessage />
             </FormItem>
