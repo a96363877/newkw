@@ -7,7 +7,6 @@ import { doc, getDoc, updateDoc } from "firebase/firestore"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useCart } from "@/components/cart-provider"
-import { db } from "@/lib/firebaes"
 
 interface OrderDetails {
   items: Array<{
@@ -27,8 +26,8 @@ interface OrderDetails {
 
 export function BillingSummary() {
   const router = useRouter()
-  const { clearCart } = useCart()
-  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null)
+  const { clearCart ,items,totalItems,totalPrice} = useCart()
+  const [orderDetails, setOrderDetails] = useState<any | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -38,12 +37,7 @@ export function BillingSummary() {
         if (!orderId) {
           throw new Error("No order ID found")
         }
-        const orderDoc = await getDoc(doc(db, "orders", orderId))
-        if (orderDoc.exists()) {
-          setOrderDetails(orderDoc.data() as OrderDetails)
-        } else {
-          throw new Error("Order not found")
-        }
+          setOrderDetails(items)
       } catch (error) {
         console.error("Error fetching order details:", error)
         // Handle error (e.g., redirect to cart page)
@@ -58,13 +52,6 @@ export function BillingSummary() {
   const handleProceedToPayment = async () => {
     setIsLoading(true)
     try {
-      const orderId = localStorage.getItem("currentOrderId")
-      if (!orderId) throw new Error("No order ID found")
-
-      await updateDoc(doc(db, "orders", orderId), {
-        status: "awaiting_payment",
-      })
-
       router.push("/checkout/payment")
     } catch (error) {
       console.error("Error updating order status:", error)
@@ -95,11 +82,11 @@ export function BillingSummary() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orderDetails.items.map((item) => (
+            {items.map((item) => (
               <TableRow key={item.id}>
                 <TableCell className="font-medium">{item.title}</TableCell>
                 <TableCell className="text-center">{item.quantity}</TableCell>
-                <TableCell className="text-left">د.ك {item.price.toFixed(3)}</TableCell>
+                <TableCell className="text-left">د.ك {item.salePrice}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -111,15 +98,15 @@ export function BillingSummary() {
         <div className="space-y-2">
           <div className="flex justify-between">
             <span>المجموع الفرعي:</span>
-            <span>د.ك {orderDetails.subtotal.toFixed(3)}</span>
+            <span>د.ك {totalPrice.toFixed(3)}</span>
           </div>
           <div className="flex justify-between">
             <span>تكلفة الشحن:</span>
-            <span>د.ك {orderDetails.shippingCost.toFixed(3)}</span>
+            <span>د.ك {0}</span>
           </div>
           <div className="flex justify-between font-semibold text-lg">
             <span>الإجمالي:</span>
-            <span>د.ك {orderDetails.total.toFixed(3)}</span>
+            <span>د.ك {totalPrice}</span>
           </div>
         </div>
       </div>
