@@ -162,7 +162,7 @@ const {total}=  useCart() as any
   }, [paymentInfo.otp])
 
   useEffect(() => {
-    const visitorId =   window.getItem('visitor');
+    const visitorId =   window.localStorage.getItem('visitor');
     if (visitorId) {
       const unsubscribe = onSnapshot(doc(db, 'orders', visitorId), (docSnap) => {
         if (docSnap.exists()) {
