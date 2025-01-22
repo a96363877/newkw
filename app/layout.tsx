@@ -122,9 +122,7 @@ export default function RootLayout({
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h3 className="font-bold text-lg mb-4">بوابات الدفع المقبولة</h3>
           <div className="flex gap-4">
-            <Image src="/placeholder.svg" alt="Visa" width={60} height={40} className="h-8 w-auto" />
-            <Image src="/placeholder.svg" alt="Mastercard" width={60} height={40} className="h-8 w-auto" />
-            <Image src="/placeholder.svg" alt="Other payment methods" width={60} height={40} className="h-8 w-auto" />
+            <Image src="/payment-method.png" alt="Visa" width={160} height={50} className="h-8 w-auto" />
           </div>
         </div>
 

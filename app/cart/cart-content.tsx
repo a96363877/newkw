@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useCart } from "@/components/cart-provider"
+import Link from "next/link"
 
 export function CartContent() {
   const { items, removeItem, updateQuantity, totalPrice } = useCart()
@@ -57,8 +58,9 @@ export function CartContent() {
         <span className="font-bold text-xl">د.ك {totalPrice.toFixed(3)}</span>
       </div>
 
-      <div className="flex justify-end">
-        <Button className="w-full md:w-auto">متابعة الشراء</Button>
+      <div className="flex justify-between">
+       <Link href="/"> <Button className=" md:w-auto w-full">متابعة الشراء</Button></Link>
+       <Link href="/checkout/shipping"> <Button variant={'outline'} className=" md:w-auto mx-1">الدفع</Button></Link>
       </div>
     </div>
   )
