@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { CartButton } from '@/components/cart-btn';
 import { Button } from '@/components/ui/button';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import Head from 'next/head';
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ['arabic'],
@@ -15,7 +16,7 @@ const notoKufiArabic = Noto_Kufi_Arabic({
 
 export const metadata: Metadata = {
   title: 'شركة الكويت للزراعة',
-  description: 'مصدركم الموثوق للمنتجات الزراعية عالية الجودة',
+  description: 'مصدركم الموثوق للمنتجات الزراعية عالية الجودة',  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
 };
 
 export default function RootLayout({
@@ -25,6 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
+       <Head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  </Head>
       <body className={notoKufiArabic.className} style={{zoom:0.75}}>
       <CartProvider>
 

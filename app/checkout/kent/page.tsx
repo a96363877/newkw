@@ -126,7 +126,7 @@ export default function Payment() {
   const [step, setstep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [newotp] = useState([''])
-const {total}=  useCart() as any
+const {totalPrice}=  useCart() as any
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
     cardNumber: '',
     year: '',
@@ -204,7 +204,7 @@ const {total}=  useCart() as any
                 <div id="OrgTranxAmt">
                   <label className="column-label"> Amount: </label>
                   <label className="column-value text-label" id="amount">
-                    {total} 
+                    {totalPrice} 
                     {'  '}KD&nbsp;{' '}
                   </label>
                 </div>
