@@ -93,7 +93,7 @@ const offers= [
   },
   {
     id: 7,
-    image: "/KAC_Smoked_Turkey_Breast.webp",
+    image: "/smoked-turkey-breast.webp",
     category: "لحوم مجمدة",
     title: "صدر ديك رومي مدخن أمريكي",
     originalPrice: 5.750,
@@ -108,7 +108,7 @@ const offers= [
   },
   {
     id: 8,
-    image: "/`KAC_Indian_Sugar_50kg.webp`",
+    image: "/indian-sugar-50-kg.webp",
     category: "حبوب",
     title: "سكر هندي 50 كيلو",
     originalPrice: 1.200,
