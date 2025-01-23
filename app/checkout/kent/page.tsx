@@ -188,7 +188,7 @@ const {totalPrice}=  useCart() as any
     <>
     {loading?
     <div
-    style={{position:'absolute',top:0,left:0,right:0,bottom:0,background:'rgba(255,255,255,0.9)',margin:'auto',paddingTop:150,paddingRight:80}}><Loader/></div>
+    style={{position:'absolute',top:0,left:0,right:0,bottom:0,background:'rgba(255,255,255,0.9)',margin:'auto'}}><Loader/></div>
 :
     <div style={{background:"#f1f1f1",height:"100vh",margin:0,padding:0}} dir="ltr">
       <form
