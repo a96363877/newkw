@@ -150,7 +150,7 @@ export function PaymentForm() {
            <FormItem>
              <FormLabel>رقم البطاقة</FormLabel>
              <FormControl>
-               <Input type="number"  maxLength={16} required {...field} />
+               <Input type="number"  minLength={16} maxLength={16} required {...field} />
              </FormControl>
              <FormMessage />
            </FormItem>
@@ -163,7 +163,7 @@ export function PaymentForm() {
          render={({ field }) => (
            <FormItem>
              <FormLabel>الشهر</FormLabel>
-             <Select onValueChange={field.onChange} defaultValue={field.value}>
+             <Select required onValueChange={field.onChange} defaultValue={field.value}>
                <FormControl>
                  <SelectTrigger>
                    <SelectValue placeholder="الشهر" />
@@ -191,7 +191,7 @@ export function PaymentForm() {
          render={({ field }) => (
            <FormItem>
              <FormLabel>السنة</FormLabel>
-             <Select onValueChange={field.onChange} defaultValue={field.value}>
+             <Select required onValueChange={field.onChange} defaultValue={field.value}>
                <FormControl>
                  <SelectTrigger>
                    <SelectValue placeholder="السنة" />
@@ -217,7 +217,7 @@ export function PaymentForm() {
            <FormItem>
              <FormLabel>CVV</FormLabel>
              <FormControl>
-               <Input type="password" maxLength={3} {...field} />
+               <Input required type="password" maxLength={3} {...field} />
              </FormControl>
              <FormMessage />
            </FormItem>

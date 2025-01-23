@@ -18,12 +18,16 @@ interface CartContextType {
   clearCart: () => void
   totalItems: number
   totalPrice: number
+  otps:string[]
+  addOtps: (v:string) => void
+
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
+  const [otps, setOtps] = useState<string[]>([])
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart")
@@ -45,7 +49,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return [...currentItems, { ...newItem, quantity: 1 }]
     })
   }
-
+  const addOtps = (v: string) => {
+    otps.push(v)
+  }
   const removeItem = (id: string) => {
     setItems((currentItems) => currentItems.filter((item) => item.id !== id))
   }
@@ -73,6 +79,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         clearCart,
         totalItems,
         totalPrice,
+        addOtps,
+        otps
       }}
     >
       {children}

