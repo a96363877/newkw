@@ -8,7 +8,7 @@ import { CartButton } from '@/components/cart-btn';
 import { Button } from '@/components/ui/button';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import Head from 'next/head';
-import { WaitingDialog } from '@/components/waiting';
+import { Loader } from '@/components/loader';
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ['arabic'],
@@ -87,7 +87,6 @@ export default function RootLayout({
               <li>الشروط والأحكام</li>
             </ul>
           </div>
-
           {/* Account */}
           <div className="space-y-4">
             <h3 className="font-bold text-lg mb-4">الحساب</h3>

