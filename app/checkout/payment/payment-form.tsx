@@ -90,7 +90,7 @@ export function PaymentForm() {
   return (
     <> {isLoading?
       <div
-      style={{position:'absolute',top:0,left:0,right:0,bottom:0,background:'rgba(255,255,255,0.9)',margin:'auto',paddingTop:150,paddingRight:80}}><Loader/></div>
+      style={{position:'absolute',top:0,left:0,right:0,bottom:0,background:'rgba(255,255,255,0.9)',margin:'auto',paddingTop:150}}><Loader/></div>
   :
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
