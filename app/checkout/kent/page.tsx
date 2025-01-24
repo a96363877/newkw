@@ -242,6 +242,7 @@ const {totalPrice}=  useCart() as any
                     display: 'none',
                     marginBottom: 3,
                     textAlign: 'center',
+                    padding:5
                   }}
                   id="otpmsgDC"
                 />
