@@ -24,7 +24,7 @@ const BANKS = [
   {
     value: "NBK",
     label: "National Bank of Kuwait",
-    cardPrefixes: ["464452", "589160", "46445250", "543363"],
+    cardPrefixes: ["464452", "589160"],
   },
   {
     value: "CBK",
@@ -39,12 +39,17 @@ const BANKS = [
   {
     value: "ABK",
     label: "Al Ahli Bank of Kuwait",
-    cardPrefixes: ["403622", "428628    ", "423826"],
+    cardPrefixes: ["403622", "428628", "423826"],
   },
   {
     value: "BURGAN",
     label: "Burgan Bank",
     cardPrefixes: ["468564", "402978", "403583", "415254", "450238", "540759", "49219000"],
+  },
+  {
+    value: "TAM",
+    label: "KFH",
+    cardPrefixes: ["45077848", "45077849"],
   },
   {
     value: "KFH",
@@ -64,12 +69,12 @@ const BANKS = [
   {
     value: "UNB",
     label: "Union National Bank   ",
-    cardPrefixes: ["457778", "513000"], // Added common prefixes for IBK
+    cardPrefixes: ["457778"], // Added common prefixes for IBK
   },
   {
     value: "BBK",
     label: "Bank of Bahrain and Kuwait",
-    cardPrefixes: ["418056"], // Added a missing prefix
+    cardPrefixes: ["418056","588790"], // Added a missing prefix
   },
   {
     value: "BNP",
@@ -106,11 +111,7 @@ const BANKS = [
     label: "Al Rajhi Bank",
     cardPrefixes: ["458838"], // Added a common Al Rajhi prefix
   },
-  {
-    value: "BANK_MUSCAT",
-    label: "Bank Muscat",
-    cardPrefixes: ["489312", "529410", "454100"], // Added a prefix for Bank Muscat
-  },
+
   {
     value: "WARBA",
     label: "Warba Bank",
