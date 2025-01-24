@@ -14,7 +14,7 @@ interface ProductCardProps {
     
     
     id: '01',
-    image: "/of1.jpg",
+    image: "/top2.jpg",
     category: "الزيوت",
     title: "زيت زيتون فلسسطيني  - 15 لتر",
     originalPrice: 65.0,
@@ -22,7 +22,7 @@ interface ProductCardProps {
   },
   {
     id: '02',
-    image: "/of3.jpg  ",
+    image: "/top1.jpg  ",
     category: "الزيوت",
     title: "زيت زيتون ممتاز  - 15 لتر",
     originalPrice: 65.292,
