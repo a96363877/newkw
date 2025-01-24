@@ -42,7 +42,7 @@ export function SpecialOfferCard({
           <h3 className="font-xsm line-clamp-2 ">{title}</h3>
           <div className="flex items-center gap-2">
            <div className="flex flex-col">
-           <span className="text-blue-600 ">د.ك {salePrice.toFixed(2)}</span>
+           <span className="text-blue-600 ">د.ك {originalPrice.toFixed(2)/2}</span>
             <span className="text-gray-400 line-through text-xsm">د.ك {originalPrice.toFixed(2)}</span>
            </div>
             {soldOut ? (
