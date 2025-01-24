@@ -70,7 +70,6 @@ const {otps,addOtps}=useCart()
             </FormItem>
           )}
         />
-
         <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? "جاري التحقق..." : "تأكيد"}
         </Button>
