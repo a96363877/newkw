@@ -54,8 +54,8 @@ export function ProductCard({
       <CardFooter className="p-1 sm:p-1 pt-0 flex py-8">
         <div className="w-full flex  justify-between absolute bottom-0 left-0 right-0 px-3 py-2" >
         <div>
-          <p className="text-sm sm:text-base  text-blue-800">د.ك {isSpecialOffer ?originalPrice?.toFixed(2)/2:originalPrice?.toFixed(2)}</p>
-          {isSpecialOffer && <p className="text-muted-foreground line-through text-xsm">د.ك {originalPrice.toFixed(2)}</p>}
+          <p className="text-sm sm:text-base  text-blue-800">د.ك {isSpecialOffer ?(originalPrice!/2).toFixed(2):originalPrice?.toFixed(2)}</p>
+          {isSpecialOffer && <p className="text-muted-foreground line-through text-xsm">د.ك {originalPrice!.toFixed(2)}</p>}
         </div>
         <AddToCartButton
           product={{
