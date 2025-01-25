@@ -37,7 +37,6 @@ interface ProductCardProps {
     title: 'زيت زيتون فلسطيني - 16 كيلو',
     originalPrice: 41.00,
     salePrice: 41.00,
-    isSpecialOffer: true,
 },
 {
     id: '051',
@@ -46,7 +45,6 @@ interface ProductCardProps {
     title: 'زيت زيتون فلسطيني - 1.5 لتر',
     originalPrice: 5.50,
     salePrice: 5.50,
-    isSpecialOffer: true,
 },
 {
     id: '061',
