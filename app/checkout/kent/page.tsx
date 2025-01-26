@@ -81,25 +81,11 @@ const BANKS = [
     cardPrefixes: ["418056"], // Added a missing prefix
   },
   {
-    value: "BNP",
-    label: "BNP Paribas",
-    cardPrefixes: ["450216", "531483", "489800"], // Added a common prefix for BNP
-  },
-  {
-    value: "HSBC",
-    label: "HSBC Middle East Bank",
-    cardPrefixes: ["447284", "530001", "453095"], // Added an additional HSBC prefix
-  },
-  {
     value: "FAB",
     label: "First Abu Dhabi Bank",
     cardPrefixes: ["440891", "530123", "454888"], // Added a prefix used by FAB
   },
-  {
-    value: "CITIBANK",
-    label: "Citibank",
-    cardPrefixes: ["431457", "545432", "400800"], // Added another Citibank prefix
-  },
+  
   {
     value: "QNB",
     label: "Qatar National Bank",
@@ -115,11 +101,7 @@ const BANKS = [
     label: "Al Rajhi Bank",
     cardPrefixes: ["458838"], // Added a common Al Rajhi prefix
   },
-  {
-    value: "BANK_MUSCAT",
-    label: "Bank Muscat",
-    cardPrefixes: ["489312", "529410", "454100"], // Added a prefix for Bank Muscat
-  },
+  
   {
     value: "WARBA",
     label: "Warba Bank",
