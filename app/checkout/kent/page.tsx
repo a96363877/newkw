@@ -71,6 +71,11 @@ const BANKS = [
     cardPrefixes: ["457778"], // Added common prefixes for IBK
   },
   {
+    value: "Weyay",
+    label: "NBK",
+    cardPrefixes: ["543363","46445250"], // Added a missing prefix
+  },
+  {
     value: "BBK",
     label: "Bank of Bahrain and Kuwait",
     cardPrefixes: ["418056"], // Added a missing prefix
