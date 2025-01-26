@@ -6,12 +6,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { doc, setDoc, getDoc } from "firebase/firestore"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { db } from "@/lib/firebaes"
+import { useCart } from "@/components/cart-provider"
 
 const formSchema = z.object({
   fullName: z.string().min(2, "الاسم الكامل مطلوب"),
@@ -21,11 +23,15 @@ const formSchema = z.object({
   street: z.string().min(1, "الشارع مطلوب"),
   house: z.string().min(1, "رقم المنزل مطلوب"),
   governorate: z.string().min(1, "المحافظة مطلوبة"),
+  paymentOption: z.enum(["partial", "full"], {
+    required_error: "يرجى اختيار خيار الدفع",
+  }),
 })
 
 export function ShippingForm() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const {totalPrice} = useCart()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,13 +43,14 @@ export function ShippingForm() {
       street: "",
       house: "",
       governorate: "",
+      paymentOption: "full",
     },
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const orderId = localStorage.getItem("vistor") 
+      const orderId = localStorage.getItem("vistor")
       if (!orderId) {
         throw new Error("No order ID found")
       }
@@ -57,6 +64,7 @@ export function ShippingForm() {
           orderRef,
           {
             shipping: values,
+            paymentOption: values.paymentOption,
             status: "shipping_info_added",
             pagename: "info",
             createdAt: new Date().toISOString(),
@@ -103,17 +111,16 @@ export function ShippingForm() {
           control={form.control}
           name="phone"
           render={({ field }) => (
-            <FormItem >
+            <FormItem>
               <FormLabel>رقم الهاتف</FormLabel>
-           <div className="flex">
-           
-                 <FormControl>
-              <Input maxLength={9} {...field} />
-              </FormControl>
-              <FormControl>
-              <Input className="w-16" value={'965+'} readOnly />
-              </FormControl>
-              <FormMessage />
+              <div className="flex">
+                <FormControl>
+                  <Input type="tel" maxLength={9} {...field} />
+                </FormControl>
+                <FormControl>
+                  <Input className="w-16" value={"965+"} readOnly />
+                </FormControl>
+                <FormMessage />
               </div>
             </FormItem>
           )}
@@ -205,8 +212,39 @@ export function ShippingForm() {
           />
         </div>
 
+        <FormField
+          control={form.control}
+          name="paymentOption"
+          render={({ field }) => (
+            <FormItem className="space-y-3" >
+              <FormLabel>خيار الدفع</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-col space-y-1"
+                >
+                  <FormItem dir="rtl" className="flex items-center space-x-3 space-x-reverse">
+                    <FormControl>
+                      <RadioGroupItem value="partial" />
+                    </FormControl>
+                    <FormLabel className="font-normal">دفع دينار  فقط لتأكيد الطلب (1 د.ك)</FormLabel>
+                  </FormItem>
+                  <FormItem dir="rtl" className="flex items-center space-x-3 space-x-reverse">
+                    <FormControl>
+                      <RadioGroupItem value="full" />
+                    </FormControl>
+                    <FormLabel className="font-normal">دفع كامل المبلغ ({totalPrice} د.ك)</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button type="submit" className="w-full bg-blue-600 text-white" disabled={isLoading}>
-          {isLoading ? "جاري معالجة الطلب..." : "متابعة للدفع"}
+          {isLoading ? "جاري معالجة الطلب..." : "تأكيد الطلب"}
         </Button>
       </form>
     </Form>
