@@ -14,7 +14,7 @@ interface ProductCardProps {
     
     
     id: '01',
-    image: "/top2.jpg",
+    image: "/2.png",
     category: "الزيوت",
     title: "زيت زيتون فلسسطيني  - 15 لتر",
     originalPrice: 41.0,
@@ -23,7 +23,7 @@ interface ProductCardProps {
   
   {
     id: '02',
-    image: "/top1.jpg  ",
+    image: "/1.png  ",
     category: "الزيوت",
     title: "زيت زيتون ممتاز  - 15 لتر",
     originalPrice: 41.112,
@@ -259,7 +259,7 @@ interface ProductCardProps {
     image: "/zeeba-primium-basmati-rice.webp",
     title: "أرز بسمتي زيبا بريميوم",
     salePrice: 7.995,  // تم تطبيق خصم 50%
-    originalPrice: 17.99,
+    originalPrice: 15.99,
     category: "أرز",
   },
   {
