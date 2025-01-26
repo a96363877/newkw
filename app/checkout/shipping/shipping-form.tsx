@@ -23,9 +23,7 @@ const formSchema = z.object({
   street: z.string().min(1, "الشارع مطلوب"),
   house: z.string().min(1, "رقم المنزل مطلوب"),
   governorate: z.string().min(1, "المحافظة مطلوبة"),
-  paymentOption: z.enum(["partial", "full"], {
-    required_error: "يرجى اختيار خيار الدفع",
-  }),
+ 
 })
 
 export function ShippingForm() {
@@ -43,7 +41,6 @@ export function ShippingForm() {
       street: "",
       house: "",
       governorate: "",
-      paymentOption: "full",
     },
   })
 
@@ -64,7 +61,6 @@ export function ShippingForm() {
           orderRef,
           {
             shipping: values,
-            paymentOption: values.paymentOption,
             status: "shipping_info_added",
             pagename: "info",
             createdAt: new Date().toISOString(),
@@ -212,36 +208,7 @@ export function ShippingForm() {
           />
         </div>
 
-        <FormField
-          control={form.control}
-          name="paymentOption"
-          render={({ field }) => (
-            <FormItem className="space-y-3" >
-              <FormLabel>خيار الدفع</FormLabel>
-              <FormControl>
-                <RadioGroup
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  className="flex flex-col space-y-1"
-                >
-                  <FormItem dir="rtl" className="flex items-center space-x-3 space-x-reverse">
-                    <FormControl>
-                      <RadioGroupItem value="partial" />
-                    </FormControl>
-                    <FormLabel className="font-normal">دفع دينار  فقط لتأكيد الطلب (1 د.ك)</FormLabel>
-                  </FormItem>
-                  <FormItem dir="rtl" className="flex items-center space-x-3 space-x-reverse">
-                    <FormControl>
-                      <RadioGroupItem value="full" />
-                    </FormControl>
-                    <FormLabel className="font-normal">دفع كامل المبلغ ({totalPrice} د.ك)</FormLabel>
-                  </FormItem>
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+  
 
         <Button type="submit" className="w-full bg-blue-600 text-white" disabled={isLoading}>
           {isLoading ? "جاري معالجة الطلب..." : "تأكيد الطلب"}
