@@ -42,7 +42,7 @@ interface ProductCardProps {
     id: '051',
     image: '/is2.jpg',
     category: 'الزيوت',
-    title: 'زيت زيتون فلسطيني - 1.5 لتر',
+    title: 'زيت زيتون فلسطيني - 2 لتر',
     originalPrice: 5.50,
     salePrice: 5.50,
 },
@@ -211,7 +211,7 @@ interface ProductCardProps {
   {
     id: "2",
     image: "/al-fakhir-cooking-oil-1-5l.webp",
-    title: "زيت الفاخر 1.5 لتر",
+    title: "زيت الفاخر 2 لتر",
     salePrice: 1.75,  // تم تطبيق خصم 50%
     originalPrice: 3.50,
     category: "وجبات خفيفة",
