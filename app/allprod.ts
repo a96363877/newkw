@@ -16,16 +16,16 @@ interface ProductCardProps {
     id: '01',
     image: "/2.png",
     category: "الزيوت",
-    title: "زيت زيتون فلسسطيني  - 15 لتر",
+    title: "زيت زيتون فلسسطيني  - 15 كيلو",
     originalPrice: 31.0,
-    salePrice: 41.0  // تم تطبيق خصم 50%
+    salePrice: 31.0  // تم تطبيق خصم 50%
   },
   
   {
     id: '02',
     image: "/1.png  ",
     category: "الزيوت",
-    title: "زيت زيتون ممتاز  - 15 لتر",
+    title: "زيت زيتون ممتاز  - 15 كيلو",
     originalPrice: 31.112,
     salePrice: 31.10,  // تم تطبيق خصم 50%
   },
@@ -35,8 +35,8 @@ interface ProductCardProps {
     image: '/is1.jpg',
     category: 'الزيوت',
     title: 'زيت زيتون فلسطيني - 16 كيلو',
-    originalPrice: 41.00,
-    salePrice: 41.00,
+    originalPrice: 31.00,
+    salePrice: 31.00,
 },
 {
     id: '051',
