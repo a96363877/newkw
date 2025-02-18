@@ -17,7 +17,7 @@ interface ProductCardProps {
     image: "/2.png",
     category: "الزيوت",
     title: "زيت زيتون فلسسطيني  - 15 لتر",
-    originalPrice: 41.0,
+    originalPrice: 31.0,
     salePrice: 41.0  // تم تطبيق خصم 50%
   },
   
@@ -26,8 +26,8 @@ interface ProductCardProps {
     image: "/1.png  ",
     category: "الزيوت",
     title: "زيت زيتون ممتاز  - 15 لتر",
-    originalPrice: 41.112,
-    salePrice: 41.10,  // تم تطبيق خصم 50%
+    originalPrice: 31.112,
+    salePrice: 31.10,  // تم تطبيق خصم 50%
   },
 
   {
